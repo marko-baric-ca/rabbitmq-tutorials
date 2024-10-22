@@ -14,7 +14,7 @@ await channel.QueueDeclareAsync(queue: QUEUE_NAME, durable: false, exclusive: fa
 await channel.BasicQosAsync(prefetchSize: 0, prefetchCount: 1, global: false);
 
 var consumer = new AsyncEventingBasicConsumer(channel);
-consumer.Received += async (object sender, BasicDeliverEventArgs ea) =>
+consumer.ReceivedAsync += async (object sender, BasicDeliverEventArgs ea) =>
 {
     AsyncEventingBasicConsumer cons = (AsyncEventingBasicConsumer)sender;
     IChannel ch = cons.Channel;

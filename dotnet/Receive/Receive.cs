@@ -12,7 +12,7 @@ await channel.QueueDeclareAsync(queue: "hello", durable: false, exclusive: false
 Console.WriteLine(" [*] Waiting for messages.");
 
 var consumer = new AsyncEventingBasicConsumer(channel);
-consumer.Received += (model, ea) =>
+consumer.ReceivedAsync += (model, ea) =>
 {
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);

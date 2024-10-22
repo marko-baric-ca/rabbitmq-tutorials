@@ -30,7 +30,7 @@ public class RpcClient : IAsyncDisposable
         _replyQueueName = queueDeclareResult.QueueName;
         var consumer = new AsyncEventingBasicConsumer(_channel);
 
-        consumer.Received += (model, ea) =>
+        consumer.ReceivedAsync += (model, ea) =>
         {
             string? correlationId = ea.BasicProperties.CorrelationId;
 

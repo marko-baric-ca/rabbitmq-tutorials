@@ -17,7 +17,7 @@ await channel.QueueBindAsync(queue: queueName, exchange: "logs", routingKey: str
 Console.WriteLine(" [*] Waiting for logs.");
 
 var consumer = new AsyncEventingBasicConsumer(channel);
-consumer.Received += (model, ea) =>
+consumer.ReceivedAsync += (model, ea) =>
 {
     byte[] body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);

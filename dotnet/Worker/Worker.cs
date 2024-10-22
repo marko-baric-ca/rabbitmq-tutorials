@@ -14,7 +14,7 @@ await channel.BasicQosAsync(prefetchSize: 0, prefetchCount: 1, global: false);
 Console.WriteLine(" [*] Waiting for messages.");
 
 var consumer = new AsyncEventingBasicConsumer(channel);
-consumer.Received += async (model, ea) =>
+consumer.ReceivedAsync += async (model, ea) =>
 {
     byte[] body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
